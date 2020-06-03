@@ -9,6 +9,7 @@ const Shape = ({ name, x, y, width, height }) => {
         left: x,
         top: y,
         width: `${width}px`,
+        color: 'red',
         height: `${height}px`,
         backgroundColor: 'rgba(0,0,0,0.5)',
       }}
