@@ -12,6 +12,7 @@ const Shape = ({ name, x, y, width, height }) => {
         color: 'red',
         weight: `${height}px`,
         backgroundColor: 'rgba(0,0,0,0.5)',
+        task6: 'task6 added',
       }}
       data-name={name}
     ></div>
