@@ -13,6 +13,8 @@ const Shape = ({ name, x, y, width, height }) => {
         width: `${width}px`,
         weight: `${height2}px`,
         backgroundColor: 'rgba(0,0,0,0.5)',
+        task6: 'task6 added',
+        task7: 'task7 added',
       }}
       data-name={name}
     ></div>
@@ -21,6 +23,14 @@ const Shape = ({ name, x, y, width, height }) => {
 
 //Validating props
 Shape.propTypes = {
+  name: PropTypes.string,
+  x: PropTypes.number,
+  y: PropTypes.number,
+  width: PropTypes.number,
+  height: PropTypes.number,
+};
+//Validating props
+Weight.propTypes = {
   name: PropTypes.string,
   x: PropTypes.number,
   y: PropTypes.number,
