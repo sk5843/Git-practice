@@ -26,5 +26,13 @@ Shape.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
 };
+//Validating props
+Weight.propTypes = {
+  name: PropTypes.string,
+  x: PropTypes.number,
+  y: PropTypes.number,
+  width: PropTypes.number,
+  height: PropTypes.number,
+};
 
 export { Shape };
