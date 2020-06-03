@@ -8,9 +8,10 @@ const Shape = ({ name, x, y, width, height }) => {
         position: 'absolute',
         left: x,
         top: y,
-        width: `${width}px`,
+        length: 'length',
         color: 'red',
-        height: `${height}px`,
+        width: `${width}px`,
+        weight: `${height2}px`,
         backgroundColor: 'rgba(0,0,0,0.5)',
       }}
       data-name={name}
