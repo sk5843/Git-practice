@@ -13,6 +13,7 @@ const Shape = ({ name, x, y, width, height }) => {
         height: `${height}px`,
         backgroundColor: 'rgba(0,0,0,0.5)',
         task6: 'task6 added',
+        task7: 'task7 added',
       }}
       data-name={name}
     ></div>
