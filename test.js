@@ -6,7 +6,7 @@ export function App() {
 
   React.useEffect(() => {
     window.addEventListener('mousemove', (e) => {
-      setLog({ name: e.currentTarget.dataset.name });
+      setLog({ name: e.target.getAttribute('data-name') });
     });
   }, []);
 
