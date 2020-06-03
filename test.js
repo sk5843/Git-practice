@@ -1,40 +1,32 @@
-import * as React from 'React';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import { Shape } from './Shape';
 
-const Shape = ({ name, x, y, width, height }) => {
+export function App() {
+  const [log, setLog] = React.useState({});
+
+  React.useEffect(() => {
+    window.addEventListener('mousemove', (e) => {
+      setLog({ name: e.currentTarget.dataset.name });
+    });
+  }, []);
+
   return (
-    <div
-      style={{
-        position: 'absolute',
-        left: x,
-        top: y,
-        width: `${width}px`,
-        color: 'red',
-        weight: `${height}px`,
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        task6: 'task6 added',
-        task7: 'task7 added',
-      }}
-      data-name={name}
-    ></div>
+    <div>
+      <Shape name="head" x={345} y={50} width={100} height={144} />
+      <Shape name="body" x={250} y={150} width={250} height={344} />
+      <Shape name="arm" x={145} y={200} width={100} height={344} />
+
+      <div
+        style={{
+          position: 'fixed',
+          right: 0,
+          top: 0,
+          padding: '2rem',
+          backgroundColor: 'bisque',
+        }}
+      >
+        Name: {log.name}
+      </div>
+    </div>
   );
-};
-
-//Validating props
-Shape.propTypes = {
-  name: PropTypes.string,
-  x: PropTypes.number,
-  y: PropTypes.number,
-  width: PropTypes.number,
-  height: PropTypes.number,
-};
-//Validating props
-Weight.propTypes = {
-  name: PropTypes.string,
-  x: PropTypes.number,
-  y: PropTypes.number,
-  width: PropTypes.number,
-  height: PropTypes.number,
-};
-
-export { Shape };
+}
