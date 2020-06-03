@@ -6,7 +6,15 @@ export function App() {
 
   React.useEffect(() => {
     window.addEventListener('mousemove', (e) => {
-      setLog({ name: e.currentTarget.dataset.name });
+      //Getting the x/y coordinates of the mouse on hover (relative to the bottom-left of div)
+      var bounds = e.target.getBoundingClientRect();
+      var x = e.target.getAttribute('data-name') ? e.clientX - bounds.left : '';
+      var y = e.target.getAttribute('data-name')
+        ? e.clientY - bounds.bottom
+        : '';
+
+      //Updating state to store logging values
+      setLog({ name: e.target.getAttribute('data-name'), x, y });
     });
   }, []);
 
@@ -26,6 +34,10 @@ export function App() {
         }}
       >
         Name: {log.name}
+        <br />
+        x: {log.x}
+        <br />
+        y: {log.y}
       </div>
     </div>
   );
