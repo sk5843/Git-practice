@@ -35,7 +35,7 @@ function validateSecret(req, res, next) {
   }
 }
 
-app.post('/redeploy', validateSecret, (req, res) => {
+app.post('/redeploy', (req, res) => {
   console.log(req.body);
 });
 
