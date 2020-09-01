@@ -35,15 +35,15 @@ function validateSecret(req, res, next) {
   }
 }
 
-app.post('/redeploy', (req, res) => {
+app.post('/redeploy', validateSecret, (req, res) => {
   console.log(req.body);
 });
 
-//Error handling middleware
-app.use((err, req, res, next) => {
-  if (err) console.error(err);
-  res.status(403).send('Request body was not signed or verification failed');
-});
+// //Error handling middleware
+// app.use((err, req, res, next) => {
+//   if (err) console.error(err);
+//   res.status(403).send('Request body was not signed or verification failed');
+// });
 
 app.listen(process.env.PORT || 3000, function () {
   console.log(`Listening on port ${process.env.PORT || '3000'}`);
