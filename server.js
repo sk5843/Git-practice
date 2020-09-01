@@ -2,7 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
+let crypto = require('crypto');
 const { exec } = require('child_process');
+
+require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use(
@@ -11,8 +14,35 @@ app.use(
   })
 );
 
-app.post('/redeploy', (req, res) => {
+function validateSecret(req, res, next) {
+  /**
+   * Passing an argument to next() in middleware
+   * throws an error to the error handler automatically
+   */
+
+  const payload = JSON.stringify(req.body);
+  if (!payload) {
+    return next('Request body empty');
+  }
+  let sig =
+    'sha1=' +
+    crypto
+      .createHmac('sha1', process.env.WEBHOOK_SECRET)
+      .update(chunk.toString())
+      .digest('hex');
+  if (req.headers['x-hub-signature'] == sig) {
+    return next();
+  }
+}
+
+app.post('/redeploy', validateSecret, (req, res) => {
   console.log(req.body);
+});
+
+//Error handling middleware
+app.use((err, req, res, next) => {
+  if (err) console.error(err);
+  res.status(403).send('Request body was not signed or verification failed');
 });
 
 app.listen(process.env.PORT || 3000, function () {
